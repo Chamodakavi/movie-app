@@ -63,8 +63,8 @@ export default function Header() {
        <Box
         borderRadius={50}
         overflow="hidden"    
-        width={50}
-        height={50}
+        width={30}
+        height={30}
         _hover={{
             cursor: "pointer",
         }}
@@ -73,8 +73,8 @@ export default function Header() {
         <Image
           src='https://assets-global.website-files.com/6041fe62768b97d77f78b61d/64505350ae2ee1be7192d1d8_nextjs.svg'
           alt="Profile Image"
-          width={50}           
-          height={50}         
+          width={30}           
+          height={30}         
           objectFit="cover" 
         />
       </Box>
