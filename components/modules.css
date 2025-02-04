@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #333;
+    font-size: xx-large;
+    padding: 10px 10px 10px 10px;
+}
+
+.side-drawer {
+  position: fixed;
+  top: 10;
+  left: 0;
+  width: 210px;
+  height: 100%;
+  background-color: #333;
+  padding: 20px;
+  color: white;
+  z-index: 1;
+}
+
+.mini-side-drawer {
+  position: fixed;
+  top: 10;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background-color: #333;
+  padding: 20px;
+  color: white;
+  z-index: 1;
+}
