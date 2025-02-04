@@ -11,7 +11,7 @@ import { LuSearch } from "react-icons/lu";
 import Image from "next/image";
 import { useContext } from "react";
 
-import { Context } from "../app/layout";
+import { Context } from "../app/context";
 
 export default function Header() {
 

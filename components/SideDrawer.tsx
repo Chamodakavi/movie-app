@@ -11,7 +11,7 @@ import {
 import "./modules.css";
 import { useContext } from "react";
 import { FaHome, FaFire, FaStar, FaList, FaSignOutAlt } from "react-icons/fa";
-import { Context, DrawerContext } from "../app/layout";
+import { Context, DrawerContext } from "../app/context";
 import MiniSideDrawer from "./MiniSideDrawer";
 
 type StyledListItemProps = {
