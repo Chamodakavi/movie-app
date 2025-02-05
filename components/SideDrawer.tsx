@@ -57,7 +57,8 @@ export default function SideDrawer() {
 
   return (
 
-   <Box>
+   <Box
+    transition="width 0.3s ease-in-out">
         {
             active ? (
       <Box
@@ -66,6 +67,7 @@ export default function SideDrawer() {
       flexDirection="column"
       height="100vh" 
       overflowY={"auto"}
+      
     >
       <List.Root listStyle={"none"} fontSize={"lg"} flexGrow={1}>
         <List.Indicator fontSize={12} color={"gray.400"} mb={3}>
