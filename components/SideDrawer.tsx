@@ -4,7 +4,7 @@ import { Icon, List, ListItem, Stack, Text, Box } from "@chakra-ui/react";
 import "./modules.css";
 import { useContext } from "react";
 import { FaHome, FaFire, FaStar, FaList, FaSignOutAlt } from "react-icons/fa";
-import { Context, DrawerContext } from "../app/context";
+import { Context, DrawerContext } from "../app/(home)/context";
 import MiniSideDrawer from "./MiniSideDrawer";
 
 type StyledListItemProps = {

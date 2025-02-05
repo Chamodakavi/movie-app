@@ -7,7 +7,7 @@ import "./modules.css";
 import { InputGroup } from "../components/ui/input-group";
 import Image from "next/image";
 import { useContext, useEffect, useRef, useState } from "react";
-import { Context } from "../app/context";
+import { Context } from "../app/(home)/context";
 import Profile from "./Profile";
 
 export default function Header() {

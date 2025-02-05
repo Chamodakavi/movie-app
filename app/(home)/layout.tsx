@@ -3,10 +3,10 @@
 import { Inter } from "next/font/google";
 import { ContextProvider, Context } from "./context";
 import Provider from "./provider";
-import Header from "../components/Header";
-import SideDrawer from "../components/SideDrawer";
+import Header from "../../components/Header";
+import SideDrawer from "../../components/SideDrawer";
 import React, { useContext } from "react";
-import Categories from "../components/Categories";
+import Categories from "../../components/Categories";
 import { Box } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });

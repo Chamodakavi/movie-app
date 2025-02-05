@@ -1,6 +1,6 @@
 import { Box, Icon, List, ListItem, Stack } from "@chakra-ui/react";
 import { FaHome, FaFire, FaStar, FaList, FaSignOutAlt } from "react-icons/fa";
-import { DrawerContext } from "../app/context";
+import { DrawerContext } from "../app/(home)/context";
 import { useContext } from "react";
 import "./modules.css";
 

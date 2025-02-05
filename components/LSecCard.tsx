@@ -1,18 +1,43 @@
+
+'use client';
+
 import { Box, Card, Text, Image, GridItem } from "@chakra-ui/react";
 import { FaPlay } from "react-icons/fa";
 
 import { movies , tvSeries } from "../assets/data/Data";
+import { useRouter } from "next/navigation";
 
-interface MovieProps {
+
+
+interface CategoryProps {
     title: string;
 }
 
-export default function LSecCard({ title }: MovieProps) {
+export default function LSecCard({ title }: CategoryProps) {
  
 
    const displayedMovies = title === "All Movies" ? movies : title === "TV Series" ? tvSeries : movies.slice(0, 4);
 
+     const router = useRouter();
+     
+   const handleClick = (movie: any) => {
+    const query = new URLSearchParams({
+          id: movie.id,
+          title: movie.title,
+          shortDescription: movie.shortDescription,
+          detailedDescription:movie.detailedDescription,
+          genre:movie.genre,
+          category:movie.category,
+          imdbRating:movie.imdbRating,
+          imageUrl: movie.imageUrl,
+          casting: movie.casting,
+          additionalImages:movie.additionalImages
 
+        }).toString();
+        router.push(`/play?${query}`);
+  };
+
+  
   return (
     <Box>
       <Text fontSize={"2xl"} fontWeight={"bold"} color={"white"}>
@@ -44,7 +69,7 @@ export default function LSecCard({ title }: MovieProps) {
               borderRadius={"xl"}
               mt={5}
               p={5}
-             
+              onClick={() => handleClick(movie)}
             >
               <Box height="150px" overflow="hidden" borderRadius="md">
                 <Image
@@ -60,7 +85,7 @@ export default function LSecCard({ title }: MovieProps) {
                   {movie.title}
                 </Text>
                 <Text fontSize={"md"} color={"white"}>
-                  {movie.description}
+                  {movie.shortDescription}
                 </Text>
               </Card.Body>
               <Box
@@ -78,6 +103,7 @@ export default function LSecCard({ title }: MovieProps) {
                 _hover={{ opacity: 1, 
                     cursor: "pointer"
                 }}
+               
               >
                 <FaPlay color="white" size="3em" />
               </Box>
