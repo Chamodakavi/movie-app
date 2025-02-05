@@ -42,7 +42,7 @@ export default function Header() {
 
       <InputGroup
         startElement={
-          <Icon m={3}>
+          <Icon >
             <LuSearch />
           </Icon>
         }

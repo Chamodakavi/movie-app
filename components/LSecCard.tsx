@@ -10,7 +10,7 @@ interface MovieProps {
 export default function LSecCard({ title }: MovieProps) {
  
 
-    const displayedMovies = title === "All Movies" ? movies : title === "TV Series" ? tvSeries : movies.slice(0, 4);
+   const displayedMovies = title === "All Movies" ? movies : title === "TV Series" ? tvSeries : movies.slice(0, 4);
 
 
   return (
