@@ -61,6 +61,7 @@ function LayoutWithSidebar({ children }: { children: React.ReactNode }) {
         flex: 1, 
         padding: "1.4rem",
         minWidth: "0", 
+        overflowY: "auto",
       }}
     >
       <Categories />
