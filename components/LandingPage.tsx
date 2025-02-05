@@ -10,7 +10,7 @@ export default function LandingPage() {
         <Container 
         mt={10}
         >
-            <LSecCard/>
+            <LSecCard title="Latest Movies"/>
            
         </Container>
 
