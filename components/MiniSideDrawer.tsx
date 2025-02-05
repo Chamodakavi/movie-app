@@ -38,7 +38,7 @@ export default function MiniSideDrawer() {
   return (
     <Box
       className="mini-side-drawer"
-      display="flex"
+       display="flex"
       flexDirection="column"
       height="100vh"
       overflowY={"auto"}
