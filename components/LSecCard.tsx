@@ -1,7 +1,7 @@
 import { Box, Card, Text, Image, GridItem } from "@chakra-ui/react";
 import { FaPlay } from "react-icons/fa";
 
-import { movies } from "../assets/data/Data";
+import { movies , tvSeries } from "../assets/data/Data";
 
 interface MovieProps {
     title: string;
@@ -9,6 +9,9 @@ interface MovieProps {
 
 export default function LSecCard({ title }: MovieProps) {
  
+
+    const displayedMovies = title === "All Movies" ? movies : title === "TV Series" ? tvSeries : movies.slice(0, 4);
+
 
   return (
     <Box>
@@ -31,7 +34,7 @@ export default function LSecCard({ title }: MovieProps) {
           scrollbarWidth: "none", // Firefox
         }}
       >
-        {movies.slice(0,4).map((movie) => (
+        {displayedMovies.map((movie) => (
           <Box key={movie.id} as={GridItem}>
             <Card.Root
               height={"250px"}

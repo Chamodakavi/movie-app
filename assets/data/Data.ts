@@ -37,3 +37,41 @@ export const movies = [
         "https://th.bing.com/th/id/OIP.whbhQ4JYOIz-WvVS7tIXFAHaEK?rs=1&pid=ImgDetMain",
     },
   ];
+
+  export const tvSeries = [
+    {
+      id: 1,
+      title: "Stranger Things",
+      description: "Mystery in Hawkins",
+      imageUrl:
+        "https://th.bing.com/th/id/OIP.fMG1iBBCN5alxGYx0ojHbQHaEK?rs=1&pid=ImgDetMain",
+    },
+    {
+      id: 2,
+      title: "Breaking Bad",
+      description: "The Rise of Heisenberg",
+      imageUrl:
+        "https://th.bing.com/th/id/OIP.2nJno--oWuZ8nlZpBJX_1QHaDt?rs=1&pid=ImgDetMain",
+    },
+    {
+      id: 3,
+      title: "Game of Thrones",
+      description: "Battle for the Iron Throne",
+      imageUrl:
+        "https://th.bing.com/th/id/OIP.G64xhzaiRJ5iqndsU7VXhAHaEK?rs=1&pid=ImgDetMain",
+    },
+    {
+      id: 4,
+      title: "The Witcher",
+      description: "Monster Hunter's Journey",
+      imageUrl:
+        "https://th.bing.com/th/id/OIP.fClONn65TrnPQZbml68CUwHaEK?rs=1&pid=ImgDetMain",
+    },
+    {
+      id: 5,
+      title: "The Mandalorian",
+      description: "A Lone Bounty Hunter",
+      imageUrl:
+        "https://th.bing.com/th/id/OIP.LNUbtBF0J7FG0_JdhrCBmAHaEK?rs=1&pid=ImgDetMain",
+    },
+];
