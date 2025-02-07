@@ -162,7 +162,7 @@ function PlayPageContent() {
               )}
             </Box>
           </GridItem>
-          <GridItem display={"flex"} justifyContent={"center"} mt={20}>
+          <GridItem display={"flex"} justifyContent={"center"} my={20} pb={20}>
             <HStack gap={4}>
               <Button
                 colorScheme="red"
