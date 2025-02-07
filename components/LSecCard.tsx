@@ -1,43 +1,42 @@
-
-'use client';
+"use client";
 
 import { Box, Card, Text, Image, GridItem } from "@chakra-ui/react";
 import { FaPlay } from "react-icons/fa";
 
-import { movies , tvSeries } from "../assets/data/Data";
+import { movies, tvSeries } from "../assets/data/Data";
 import { useRouter } from "next/navigation";
 
-
-
 interface CategoryProps {
-    title: string;
+  title: string;
 }
 
 export default function LSecCard({ title }: CategoryProps) {
- 
+  const displayedMovies =
+    title === "All Movies"
+      ? movies
+      : title === "TV Series"
+      ? tvSeries
+      : movies.slice(0, 4);
 
-   const displayedMovies = title === "All Movies" ? movies : title === "TV Series" ? tvSeries : movies.slice(0, 4);
+  const router = useRouter();
 
-     const router = useRouter();
-     
-   const handleClick = (movie: any) => {
+  const handleClick = (movie: any) => {
     const query = new URLSearchParams({
-          id: movie.id,
-          title: movie.title,
-          shortDescription: movie.shortDescription,
-          detailedDescription:movie.detailedDescription,
-          genre:movie.genre,
-          category:movie.category,
-          imdbRating:movie.imdbRating,
-          imageUrl: movie.imageUrl,
-          casting: movie.casting,
-          additionalImages:movie.additionalImages
-
-        }).toString();
-        router.push(`/play?${query}`);
+      id: movie.id,
+      title: movie.title,
+      shortDescription: movie.shortDescription,
+      detailedDescription: movie.detailedDescription,
+      genre: movie.genre,
+      category: movie.category,
+      imdbRating: movie.imdbRating,
+      imageUrl: movie.imageUrl,
+      youtubeLink: movie.ytUrl,
+      casting: movie.casting,
+      additionalImages: movie.additionalImages,
+    }).toString();
+    router.push(`/play?${query}`);
   };
 
-  
   return (
     <Box>
       <Text fontSize={"2xl"} fontWeight={"bold"} color={"white"}>
@@ -100,10 +99,7 @@ export default function LSecCard({ title }: CategoryProps) {
                 justifyContent="center"
                 opacity="0"
                 transition="opacity 0.3s"
-                _hover={{ opacity: 1, 
-                    cursor: "pointer"
-                }}
-               
+                _hover={{ opacity: 1, cursor: "pointer" }}
               >
                 <FaPlay color="white" size="3em" />
               </Box>

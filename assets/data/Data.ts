@@ -51,9 +51,10 @@ export const movies = [
     casting: ["Chadwick Boseman", "Michael B. Jordan", "Lupita Nyong'o"],
     imageUrl: "https://th.bing.com/th/id/OIP.Myf1r-XsLHVE_WH58lG-UQHaDt?rs=1&pid=ImgDetMain",
     additionalImages: [
-      "https://th.bing.com/th/id/OIP.A0Hh5HrnQoUempLS3pQQnwHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP.hiKvdeHbwyO_exdGTGVVngHaD5?rs=1&pid=ImgDetMain",
       "https://th.bing.com/th/id/OIP.HXaAiMUmZ3wbwfRHVse_HQAAAA?w=474&h=711&rs=1&pid=ImgDetMain"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
   },
   {
     id: 2,
@@ -65,10 +66,14 @@ export const movies = [
     imdbRating: 8.4,
     casting: ["Robert Downey Jr.", "Chris Evans", "Scarlett Johansson"],
     imageUrl: "https://th.bing.com/th/id/OIP.jd30pttsOqt1erUgPpaVdAHaE8?rs=1&pid=ImgDetMain",
+    ytUrl:"https://www.youtube.com/embed/TcMBFSGVi1c",
     additionalImages: [
-      "https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_SY679_.jpg",
-      "https://flxt.tmsimg.com/assets/p16974878_p_v12_ar.jpg"
-    ]
+      "https://th.bing.com/th/id/OIP.7Hwnct1pqxxE9w188tzT7wHaEK?rs=1&pid=ImgDetMain",
+      "https://bgr.com/wp-content/uploads/2019/04/avengers-endgame-tony-stark-space-3.jpg?quality=82&strip=all",
+      "https://images.hdqwalls.com/wallpapers/bthumb/alienation-4k.jpg",
+      "https://cdn.mos.cms.futurecdn.net/8QgqHGkiXi4E2PY3QcZNSg.jpg",
+
+    ],
   },
   {
     id: 3,
@@ -83,7 +88,8 @@ export const movies = [
     additionalImages: [
       "https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg",
       "https://flxt.tmsimg.com/assets/p7825626_p_v8_aa.jpg"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
   },
   {
     id: 4,
@@ -98,7 +104,8 @@ export const movies = [
     additionalImages: [
       "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SY679_.jpg",
       "https://flxt.tmsimg.com/assets/p10311907_p_v8_ab.jpg"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
   },
   {
       id: 5,
@@ -112,9 +119,10 @@ export const movies = [
     imdbRating: 8.6,
     casting: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
     additionalImages: [
+      "https://th.bing.com/th/id/OIP.j4lp-wE1teLZ8BlOBJ0f1wHaKl?rs=1&pid=ImgDetMain",
       "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SY679_.jpg",
-      "https://flxt.tmsimg.com/assets/p10311907_p_v8_ab.jpg"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
     },
 ];
 
@@ -132,7 +140,8 @@ export const tvSeries = [
     additionalImages: [
       "https://m.media-amazon.com/images/M/MV5BMjQ2Njk5Njk1N15BMl5BanBnXkFtZTgwMzI2NzYzNzM@._V1_.jpg",
       "https://flxt.tmsimg.com/assets/p12932331_b_h8_aa.jpg"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
   },
   {
     id: 2,
@@ -147,7 +156,8 @@ export const tvSeries = [
     additionalImages: [
       "https://m.media-amazon.com/images/I/81mBqESjwqL._AC_SY679_.jpg",
       "https://flxt.tmsimg.com/assets/p8696131_b_h8_ab.jpg"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
   },
   {
     id: 3,
@@ -163,46 +173,10 @@ export const tvSeries = [
     additionalImages: [
       "https://m.media-amazon.com/images/I/81mBqESjwqL._AC_SY679_.jpg",
       "https://flxt.tmsimg.com/assets/p8696131_b_h8_ab.jpg"
-    ]
+    ],
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7"
   },
   
 ];
 
 
-//   export const tvSeries = [
-//     {
-//       id: 1,
-//       title: "Stranger Things",
-//       description: "Mystery in Hawkins",
-//       imageUrl:
-//         "https://th.bing.com/th/id/OIP.fMG1iBBCN5alxGYx0ojHbQHaEK?rs=1&pid=ImgDetMain",
-//     },
-//     {
-//       id: 2,
-//       title: "Breaking Bad",
-//       description: "The Rise of Heisenberg",
-//       imageUrl:
-//         "https://th.bing.com/th/id/OIP.2nJno--oWuZ8nlZpBJX_1QHaDt?rs=1&pid=ImgDetMain",
-//     },
-//     {
-//       id: 3,
-//       title: "Game of Thrones",
-//       description: "Battle for the Iron Throne",
-//       imageUrl:
-//         "https://th.bing.com/th/id/OIP.G64xhzaiRJ5iqndsU7VXhAHaEK?rs=1&pid=ImgDetMain",
-//     },
-//     {
-//       id: 4,
-//       title: "The Witcher",
-//       description: "Monster Hunter's Journey",
-//       imageUrl:
-//         "https://th.bing.com/th/id/OIP.fClONn65TrnPQZbml68CUwHaEK?rs=1&pid=ImgDetMain",
-//     },
-//     {
-//       id: 5,
-//       title: "The Mandalorian",
-//       description: "A Lone Bounty Hunter",
-//       imageUrl:
-//         "https://th.bing.com/th/id/OIP.bDsuT8RUFOUbwB_QDJpeSwHaEK?rs=1&pid=ImgDetMain",
-//     },
-// ];

@@ -6,6 +6,11 @@ const nextConfig = {
       "upload.wikimedia.org",
       "th.bing.com",
       "image.tmdb.org", // Add more domains if needed
+      "m.media-amazon.com", 
+      "flxt.tmsimg.com",
+      "bgr.com",
+      "images.hdqwalls.com",
+      "cdn.mos.cms.futurecdn.net",
     ],
   },
 };
