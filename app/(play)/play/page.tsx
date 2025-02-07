@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   Box,
   Grid,
@@ -11,12 +11,17 @@ import {
   HStack,
   Badge,
   Button,
+  Icon,
+  Center,
+  Spinner,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import { FaArrowLeft } from "react-icons/fa";
 import "./globals.css";
 
 function PlayPageContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const title = searchParams.get("title");
   const shortDescription = searchParams.get("shortDescription");
@@ -29,10 +34,12 @@ function PlayPageContent() {
   const additionalImagesRaw = searchParams.getAll("additionalImages");
 
   const [ytLink, setYtLink] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const link = searchParams.get("youtubeLink");
     setYtLink(link ? decodeURIComponent(link) : null);
+    setLoading(false);
   }, [searchParams]);
 
   const additionalImages =
@@ -66,6 +73,22 @@ function PlayPageContent() {
       pt={20}
     >
       <Box
+        position={"absolute"}
+        top={"3.3%"}
+        right={"7%"}
+        zIndex={999}
+        _hover={{
+          cursor: "pointer",
+          color: "red.700",
+        }}
+        onClick={() => router.push("/")}
+      >
+        <Icon fontSize={"2xl"}>
+          <FaArrowLeft />
+        </Icon>
+      </Box>
+
+      <Box
         position="absolute"
         top={0}
         left={0}
@@ -86,118 +109,135 @@ function PlayPageContent() {
         mt={-3}
         paddingBottom={50}
       >
-        <Grid
-          templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-          gap={10}
-          alignItems="center"
-        >
-          <GridItem>
-            <VStack align="start" gap={4}>
-              <Text fontSize="4xl" fontWeight="bold">
-                {title}
-              </Text>
-              <Badge colorScheme="red" fontSize="lg">
-                {category}
-              </Badge>
-              <Text fontSize="xl">{shortDescription}</Text>
-              <HStack gap={2}>
-                {genre.map((g, index) => (
-                  <Badge
-                    key={index}
-                    colorScheme="blue"
-                    px={3}
-                    py={1}
-                    borderRadius="full"
-                  >
-                    {g}
-                  </Badge>
-                ))}
-              </HStack>
-              <Text fontSize="lg">
-                <strong>IMDb:</strong> ⭐ {imdbRating}/10
-              </Text>
-              <Text fontSize="lg">
-                <strong>Starring:</strong> {casting.join(", ")}
-              </Text>
-              <Text fontSize="md" opacity={0.9}>
-                {detailedDescription}
-              </Text>
-            </VStack>
-          </GridItem>
-          <GridItem>
-            <Image
-              src={additionalImages[currentImageIndex].trim()}
-              alt={`Sliding Image ${currentImageIndex + 1}`}
-              width={600}
-              height={400}
-              objectFit="cover"
-              style={{
-                borderRadius: "15px",
-                transition: "opacity 0.5s ease-in-out",
-              }}
-            />
-          </GridItem>
-        </Grid>
+        {/* Show loading state until the data is ready */}
+        {loading ? (
+          <Center height="100vh">
+            <Spinner size="xl" />
+            <Text fontSize="2xl" color="white" ml={4}>
+              Loading...
+            </Text>
+          </Center>
+        ) : (
+          <Grid
+            templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+            gap={10}
+            alignItems="center"
+          >
+            <GridItem>
+              <VStack align="start" gap={4}>
+                <Text fontSize="4xl" fontWeight="bold">
+                  {title}
+                </Text>
+                <Badge colorScheme="red" fontSize="lg">
+                  {category}
+                </Badge>
+                <Text fontSize="xl">{shortDescription}</Text>
+                <HStack gap={2}>
+                  {genre.map((g, index) => (
+                    <Badge
+                      key={index}
+                      colorScheme="blue"
+                      px={3}
+                      py={1}
+                      borderRadius="full"
+                    >
+                      {g}
+                    </Badge>
+                  ))}
+                </HStack>
+                <Text fontSize="lg">
+                  <strong>IMDb:</strong> ⭐ {imdbRating}/10
+                </Text>
+                <Text fontSize="lg">
+                  <strong>Starring:</strong> {casting.join(", ")}
+                </Text>
+                <Text fontSize="md" opacity={0.9}>
+                  {detailedDescription}
+                </Text>
+              </VStack>
+            </GridItem>
+            <GridItem>
+              <Image
+                src={additionalImages[currentImageIndex].trim()}
+                alt={`Sliding Image ${currentImageIndex + 1}`}
+                width={600}
+                height={400}
+                objectFit="cover"
+                style={{
+                  borderRadius: "15px",
+                  transition: "opacity 0.5s ease-in-out",
+                }}
+              />
+            </GridItem>
+          </Grid>
+        )}
 
-        <Grid
-          templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-          gap={2}
-          alignItems="center"
-          mt={20}
-        >
-          <GridItem bgColor={"red"}>
-            <Box position="relative" width="100%">
-              {ytLink ? (
-                <iframe
-                  width="100%"
-                  height="315"
-                  src={ytLink}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              ) : (
-                <p>No video available</p>
-              )}
-            </Box>
-          </GridItem>
-          <GridItem display={"flex"} justifyContent={"center"} my={20} pb={20}>
-            <HStack gap={4}>
-              <Button
-                colorScheme="red"
-                size="lg"
-                borderRadius="full"
-                px={6}
-                py={3}
-                fontWeight="bold"
-                _hover={{ bg: "red.600" }}
-              >
-                Download
-              </Button>
-              <Button
-                colorScheme="blue"
-                size="lg"
-                borderRadius="full"
-                px={6}
-                py={3}
-                fontWeight="bold"
-                _hover={{ bg: "blue.600" }}
-              >
-                Watch Now
-              </Button>
-            </HStack>
-          </GridItem>
-        </Grid>
+        {/* This content will also be hidden while loading */}
+        {loading ? null : (
+          <Grid
+            templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+            gap={2}
+            alignItems="center"
+            mt={20}
+          >
+            <GridItem bgColor={"red"}>
+              <Box position="relative" width="100%">
+                {ytLink ? (
+                  <iframe
+                    width="100%"
+                    height="315"
+                    src={ytLink}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                ) : (
+                  <p>No video available</p>
+                )}
+              </Box>
+            </GridItem>
+            <GridItem
+              display={"flex"}
+              justifyContent={"center"}
+              my={20}
+              pb={20}
+            >
+              <HStack gap={4}>
+                <Button
+                  colorScheme="red"
+                  size="lg"
+                  borderRadius="full"
+                  px={6}
+                  py={3}
+                  fontWeight="bold"
+                  _hover={{ bg: "red.600" }}
+                >
+                  Download
+                </Button>
+                <Button
+                  colorScheme="blue"
+                  size="lg"
+                  borderRadius="full"
+                  px={6}
+                  py={3}
+                  fontWeight="bold"
+                  _hover={{ bg: "blue.600" }}
+                >
+                  Watch Now
+                </Button>
+              </HStack>
+            </GridItem>
+          </Grid>
+        )}
       </Box>
     </Box>
   );
 }
 
-// Wrap PlayPageContent inside a Suspense boundary
 export default function PlayPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Text>Loading...</Text>}>
       <PlayPageContent />
     </Suspense>
   );
