@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Box,
   Grid,
@@ -10,12 +12,10 @@ import {
   Badge,
   Button,
 } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import "./globals.css";
 
-export default function PlayPage() {
+function PlayPageContent() {
   const searchParams = useSearchParams();
 
   const title = searchParams.get("title");
@@ -27,18 +27,13 @@ export default function PlayPage() {
   const imageUrl = searchParams.get("imageUrl");
   const casting = searchParams.getAll("casting");
   const additionalImagesRaw = searchParams.getAll("additionalImages");
+
   const [ytLink, setYtLink] = useState<string | null>(null);
 
   useEffect(() => {
     const link = searchParams.get("youtubeLink");
-    if (link) {
-      setYtLink(decodeURIComponent(link)); // Fix URL encoding issues
-    } else {
-      setYtLink(null); // Ensure no invalid iframe source
-    }
+    setYtLink(link ? decodeURIComponent(link) : null);
   }, [searchParams]);
-
-  console.log(ytLink);
 
   const additionalImages =
     additionalImagesRaw.length === 1
@@ -54,7 +49,6 @@ export default function PlayPage() {
           prevIndex === additionalImages.length - 1 ? 0 : prevIndex + 1
         );
       }, 2500);
-
       return () => clearInterval(interval);
     }
   }, [additionalImages]);
@@ -80,7 +74,6 @@ export default function PlayPage() {
         bg="rgba(0, 0, 0, 0.6)"
         backdropFilter="blur(10px)"
       />
-
       <Box
         position="relative"
         zIndex={2}
@@ -107,7 +100,6 @@ export default function PlayPage() {
                 {category}
               </Badge>
               <Text fontSize="xl">{shortDescription}</Text>
-
               <HStack gap={2}>
                 {genre.map((g, index) => (
                   <Badge
@@ -121,21 +113,17 @@ export default function PlayPage() {
                   </Badge>
                 ))}
               </HStack>
-
               <Text fontSize="lg">
                 <strong>IMDb:</strong> ⭐ {imdbRating}/10
               </Text>
-
               <Text fontSize="lg">
                 <strong>Starring:</strong> {casting.join(", ")}
               </Text>
-
               <Text fontSize="md" opacity={0.9}>
                 {detailedDescription}
               </Text>
             </VStack>
           </GridItem>
-
           <GridItem>
             <Image
               src={additionalImages[currentImageIndex].trim()}
@@ -158,11 +146,7 @@ export default function PlayPage() {
           mt={20}
         >
           <GridItem bgColor={"red"}>
-            <Box
-              position="relative"
-              width="100%"
-              // height={{ base: 200, sm: 315 }}
-            >
+            <Box position="relative" width="100%">
               {ytLink ? (
                 <iframe
                   width="100%"
@@ -178,7 +162,6 @@ export default function PlayPage() {
               )}
             </Box>
           </GridItem>
-
           <GridItem display={"flex"} justifyContent={"center"} mt={20}>
             <HStack gap={4}>
               <Button
@@ -208,5 +191,14 @@ export default function PlayPage() {
         </Grid>
       </Box>
     </Box>
+  );
+}
+
+// Wrap PlayPageContent inside a Suspense boundary
+export default function PlayPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PlayPageContent />
+    </Suspense>
   );
 }
