@@ -66,7 +66,7 @@ export const movies = [
     imdbRating: 8.4,
     casting: ["Robert Downey Jr.", "Chris Evans", "Scarlett Johansson"],
     imageUrl: "https://th.bing.com/th/id/OIP.jd30pttsOqt1erUgPpaVdAHaE8?rs=1&pid=ImgDetMain",
-    ytUrl:"https://www.youtube.com/embed/TcMBFSGVi1c",
+    youtubeLink:"https://www.youtube.com/embed/TcMBFSGVi1c?si=hvj7C1hVtx9SbWl7",
     additionalImages: [
       "https://th.bing.com/th/id/OIP.7Hwnct1pqxxE9w188tzT7wHaEK?rs=1&pid=ImgDetMain",
       "https://bgr.com/wp-content/uploads/2019/04/avengers-endgame-tony-stark-space-3.jpg?quality=82&strip=all",

@@ -30,7 +30,7 @@ export default function LSecCard({ title }: CategoryProps) {
       category: movie.category,
       imdbRating: movie.imdbRating,
       imageUrl: movie.imageUrl,
-      youtubeLink: movie.ytUrl,
+      youtubeLink: encodeURIComponent(movie.youtubeLink),
       casting: movie.casting,
       additionalImages: movie.additionalImages,
     }).toString();

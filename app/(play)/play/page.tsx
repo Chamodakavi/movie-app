@@ -27,7 +27,16 @@ export default function PlayPage() {
   const imageUrl = searchParams.get("imageUrl");
   const casting = searchParams.getAll("casting");
   const additionalImagesRaw = searchParams.getAll("additionalImages");
-  const ytLink = searchParams.get("youtubeLink") || "null";
+  const [ytLink, setYtLink] = useState<string | null>(null);
+
+  useEffect(() => {
+    const link = searchParams.get("youtubeLink");
+    if (link) {
+      setYtLink(decodeURIComponent(link)); // Fix URL encoding issues
+    } else {
+      setYtLink(null); // Ensure no invalid iframe source
+    }
+  }, [searchParams]);
 
   console.log(ytLink);
 
@@ -154,16 +163,19 @@ export default function PlayPage() {
               width="100%"
               // height={{ base: 200, sm: 315 }}
             >
-              <iframe
-                width="100%"
-                height="315"
-                src={ytLink}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
+              {ytLink ? (
+                <iframe
+                  width="100%"
+                  height="315"
+                  src={ytLink}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <p>No video available</p>
+              )}
             </Box>
           </GridItem>
 
