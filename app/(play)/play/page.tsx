@@ -114,7 +114,7 @@ function PlayPageContent() {
           <Center height="100vh">
             <Spinner size="xl" />
             <Text fontSize="2xl" color="white" ml={4}>
-              Loading AAAA...
+              Loading...
             </Text>
           </Center>
         ) : (

@@ -1,24 +1,22 @@
 import { Box, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
-
+import Link from "next/link";
 
 type CustomHStackProps = {
   children: React.ReactNode;
-}
+};
 
 const CustomHStack = ({ children }: CustomHStackProps) => (
   <HStack
-   my={4}
-   _hover={{
-    cursor: "pointer",
-    color: "red.500",
-   }}
-   >
+    my={4}
+    _hover={{
+      cursor: "pointer",
+      color: "red.500",
+    }}
+  >
     {children}
   </HStack>
 );
-
-
 
 export default function Profile() {
   return (
@@ -52,9 +50,11 @@ export default function Profile() {
       </CustomHStack>
 
       <CustomHStack>
-        <Text mt={2} fontSize={"md"}>
-          Settings
-        </Text>
+        <Link href={"/settings"}>
+          <Text mt={2} fontSize={"md"}>
+            Settings
+          </Text>
+        </Link>
       </CustomHStack>
 
       <CustomHStack>
@@ -62,7 +62,6 @@ export default function Profile() {
           Sign Out
         </Text>
       </CustomHStack>
-
     </Box>
   );
 }

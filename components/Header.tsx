@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Box, HStack, Icon, Input, Text } from "@chakra-ui/react";
 import { LuAmpersand, LuSearch } from "react-icons/lu";
@@ -9,9 +9,12 @@ import Image from "next/image";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../app/(home)/context";
 import Profile from "./Profile";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const context = useContext(Context);
+
+  const router = useRouter();
 
   if (!context) {
     throw new Error("Header must be used within a ContextProvider");
@@ -20,11 +23,14 @@ export default function Header() {
   const { active, setActive } = context;
   const [profile, setProfile] = useState(false);
 
-  const profileRef = useRef<HTMLDivElement | null>(null); 
+  const profileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target as Node)
+      ) {
         setProfile(false);
       }
     }
@@ -41,14 +47,26 @@ export default function Header() {
   return (
     <header className="header">
       <HStack>
-        <Icon mr={6} fontSize={30} _hover={{ cursor: "pointer" }} onClick={() => setActive(!active)}>
+        <Icon
+          mr={6}
+          fontSize={30}
+          _hover={{ cursor: "pointer" }}
+          onClick={() => setActive(!active)}
+        >
           <IoMenu />
         </Icon>
 
-        <Icon bgColor={"red"} borderRadius={20} p={2} fontSize={30}>
-          <LuAmpersand />
-        </Icon>
-        <Text fontSize={"large"}>iFlix</Text>
+        <HStack
+          _hover={{
+            cursor: "pointer",
+          }}
+          onClick={() => router.push("/")}
+        >
+          <Icon bgColor={"red"} borderRadius={20} p={2} fontSize={30}>
+            <LuAmpersand />
+          </Icon>
+          <Text fontSize={"large"}>iFlix</Text>
+        </HStack>
       </HStack>
 
       <InputGroup
@@ -57,7 +75,7 @@ export default function Header() {
             <LuSearch />
           </Icon>
         }
-        width={'40%'}
+        width={"40%"}
       >
         <Input
           placeholder="Search"
@@ -90,7 +108,14 @@ export default function Header() {
       </Box>
 
       {profile && (
-        <Box ref={profileRef} position="absolute" top="6%" right="2.5%" zIndex={100} width={'250px'}>
+        <Box
+          ref={profileRef}
+          position="absolute"
+          top="6%"
+          right="2.5%"
+          zIndex={100}
+          width={"250px"}
+        >
           <Profile />
         </Box>
       )}

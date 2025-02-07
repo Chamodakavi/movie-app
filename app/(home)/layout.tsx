@@ -8,6 +8,7 @@ import SideDrawer from "../../components/SideDrawer";
 import React, { useContext } from "react";
 import Categories from "../../components/Categories";
 import { Box } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -30,45 +31,46 @@ export default function RootLayout({
 }
 
 function LayoutWithSidebar({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const context = useContext(Context);
   const active = context?.active ?? false;
-
   const displayValue = active ? "block" : "none";
 
+  const isSettingsPage = pathname === "/settings";
+
   return (
-   <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-  <Header />
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <Header />
 
-  <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-    {/* Sidebar */}
-    <Box
-      display={{ base: displayValue, md: "block" }}
-      style={{
-        minWidth: active ? "200px" : "80px", 
-        maxWidth: active ? "250px" : "100px", 
-        width: active ? "17%" : "6%", 
-        transition: "width 0.5s ease",
-        flexShrink: 0, 
-        
-      }}
-    >
-      <SideDrawer />
-    </Box>
+      <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
+        {!isSettingsPage && (
+          <Box
+            display={{ base: displayValue, md: "block" }}
+            style={{
+              minWidth: active ? "200px" : "80px",
+              maxWidth: active ? "250px" : "100px",
+              width: active ? "17%" : "6%",
+              transition: "width 0.5s ease",
+              flexShrink: 0,
+            }}
+          >
+            <SideDrawer />
+          </Box>
+        )}
 
-    {/* Main Content */}
-    <main
-      style={{
-        flex: 1, 
-        padding: "1.4rem",
-        minWidth: "0", 
-        overflowY: "auto",
-      }}
-    >
-      <Categories />
-      {children}
-    </main>
-  </div>
-</div>
-
+        {/* Main Content */}
+        <main
+          style={{
+            flex: 1,
+            padding: "1.4rem",
+            minWidth: "0",
+            overflowY: "auto",
+          }}
+        >
+          {!isSettingsPage && <Categories />}
+          {children}
+        </main>
+      </div>
+    </div>
   );
 }

@@ -26,3 +26,16 @@ body{
   scrollbar-width: thin; /* Width of the scrollbar */
   scrollbar-color: #555555 #333333; /* Color of the scrollbar thumb and track */
 }
+
+/* Hide scrollbar on mobile screens */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for WebKit browsers */
+  }
+
+  * {
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+  }
+}
