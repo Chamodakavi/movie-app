@@ -45,7 +45,14 @@ export default function Header() {
   }, [profile]);
 
   return (
-    <header className="header">
+    <header
+      className="header"
+      style={{
+        position: "fixed",
+        width: "100%",
+        zIndex: 999,
+      }}
+    >
       <HStack>
         <Icon
           mr={6}

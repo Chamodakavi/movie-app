@@ -43,7 +43,7 @@ function LayoutWithSidebar({ children }: { children: React.ReactNode }) {
       <Header />
 
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-        {!isSettingsPage && (
+        {
           <Box
             display={{ base: displayValue, md: "block" }}
             style={{
@@ -52,11 +52,12 @@ function LayoutWithSidebar({ children }: { children: React.ReactNode }) {
               width: active ? "17%" : "6%",
               transition: "width 0.5s ease",
               flexShrink: 0,
+              marginTop: 60,
             }}
           >
             <SideDrawer />
           </Box>
-        )}
+        }
 
         {/* Main Content */}
         <main
@@ -65,6 +66,8 @@ function LayoutWithSidebar({ children }: { children: React.ReactNode }) {
             padding: "1.4rem",
             minWidth: "0",
             overflowY: "auto",
+            marginTop: 60,
+            position: "relative",
           }}
         >
           {!isSettingsPage && <Categories />}
